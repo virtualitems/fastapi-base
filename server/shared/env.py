@@ -7,19 +7,13 @@ from pathlib import Path
 
 from dotenv import dotenv_values
 
-def exists(value: str) -> bool:
-    """Check if an environment variable exists"""
-    return value is not None
-
-def build_env(env_path: str | None = None) -> dict[str, str]:
+def build_env(env_path: str | None = None, rules: dict | None = None) -> dict[str, str]:
     """Build the environment variable dictionary"""
 
-    rules = {
-        'APP_NAME': (exists, ),
-        'DATABASE_URL': (exists, ),
-    }
-
     env_vars = {}
+
+    if rules is None:
+        rules = {}
 
     if isinstance(env_path, str) and Path(env_path).exists():
         env_vars.update(dotenv_values(env_path))
@@ -40,4 +34,14 @@ def build_env(env_path: str | None = None) -> dict[str, str]:
 
     return env_vars
 
-env = build_env('.env')
+def exists(value: str) -> bool:
+    """Check if an environment variable exists"""
+    return value is not None
+
+env = build_env(
+    env_path='.env',
+    rules={
+        'APP_NAME': (exists, ),
+        'DATABASE_URL': (exists, ),
+    }
+)
