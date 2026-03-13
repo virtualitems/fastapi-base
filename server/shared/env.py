@@ -33,7 +33,8 @@ def build_env():
 
         for rule in rules:
             if not rule(value):
-                raise EnvironmentError(f'Environment variable {key} failed validation check: {rule.__name__}')
+                msg = f'Environment variable {key} failed validation check: {rule.__name__}'
+                raise EnvironmentError(msg)
 
         env_vars[key] = value
 
