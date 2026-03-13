@@ -7,19 +7,36 @@ from pathlib import Path
 
 from dotenv import dotenv_values
 
-env: dict[str, str] = dotenv_values('.env') if Path('.env').exists() else {}
+def exists(value: str) -> bool:
+    """Check if an environment variable exists"""
+    return value is not None
 
-env_vars = [
-    'APP_NAME',
-    'DATABASE_URL',
-]
+def build_env():
+    """Build the environment variable dictionary"""
 
-for key in env_vars:
-    value = env.get(key)
+    rules = {
+        'APP_NAME': (exists, ),
+        'DATABASE_URL': (exists, ),
+    }
 
-    if value is None:
-        value = getenv(key)
-        env[key] = value
+    env_vars = {}
 
-    if value is None:
-        raise EnvironmentError(f'Missing required environment variable: {key}')
+    if Path('.env').exists():
+        env_vars.update(dotenv_values('.env'))
+
+    for key, rules in rules.items():
+        value = env_vars.get(key)
+
+        if value is None:
+            value = getenv(key)
+            env_vars[key] = value
+
+        for rule in rules:
+            if not rule(value):
+                raise EnvironmentError(f'Environment variable {key} failed validation check: {rule.__name__}')
+
+        env_vars[key] = value
+
+    return env_vars
+
+env = build_env()
