@@ -5,8 +5,8 @@ from __future__ import annotations
 from fastapi import FastAPI
 
 from server.cats.routes import router as cats_router
-from server.shared.env import Env
+from server.shared.env import env
 
-server = FastAPI(title=Env.get('APP_NAME'))
+server = FastAPI(title=env.get('APP_NAME'))
 
 server.include_router(cats_router)

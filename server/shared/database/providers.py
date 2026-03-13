@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from sqlalchemy import create_engine, orm
 
-from server.shared.env import Env
+from server.shared.env import env
 
 engine = create_engine(
-    url=Env.get('DATABASE_URL'),
+    url=env.get('DATABASE_URL'),
     connect_args={"check_same_thread": False},
 )
 

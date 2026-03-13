@@ -3,15 +3,23 @@
 from __future__ import annotations
 
 from os import getenv
+from pathlib import Path
 
-from dotenv import load_dotenv
+from dotenv import dotenv_values
 
-load_dotenv()
+env: dict[str, str] = dotenv_values('.env') if Path('.env').exists() else {}
 
-class Env:
-    """Environment variable access class"""
+env_vars = [
+    'APP_NAME',
+    'DATABASE_URL',
+]
 
-    @staticmethod
-    def get(key: str, default: str = None) -> str:
-        """Get an environment variable value"""
-        return getenv(key, default)
+for key in env_vars:
+    value = env.get(key)
+
+    if value is None:
+        value = getenv(key)
+        env[key] = value
+
+    if value is None:
+        raise EnvironmentError(f'Missing required environment variable: {key}')
