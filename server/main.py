@@ -4,7 +4,7 @@
 from fastapi import FastAPI
 
 from server.cats.routes import router as cats_router
-from server.container import InstancesContainer
+from server.containers import InstancesContainer
 from server.shared.env import Env
 
 class FastAPIServer(FastAPI):
