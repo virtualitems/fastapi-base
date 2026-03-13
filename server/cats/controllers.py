@@ -1,7 +1,7 @@
 #--*- coding: utf-8 -*-
 """Cats module controllers"""
 
-from server.cats.models import CreateCatDTO
+from server.cats.dtos import CreateCatDTO
 from server.cats.services import CatsService
 
 

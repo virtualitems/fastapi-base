@@ -2,8 +2,8 @@
 """Cats module services"""
 
 from sqlalchemy.orm import Session
-from server.cats.orm import Cat
-from server.cats.models import CreateCatDTO
+from server.cats.orms import Cat
+from server.cats.dtos import CreateCatDTO
 
 class CatsService:
     """Service layer for cats module"""

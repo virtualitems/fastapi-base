@@ -5,7 +5,7 @@ from __future__ import annotations
 
 from fastapi import APIRouter, Depends, status
 
-from server.cats.models import CatDTO, CreateCatDTO
+from server.cats.dtos import CatDTO, CreateCatDTO
 from server.cats.controllers import CatsController
 from server.cats.providers import provide_cats_controller
 
