@@ -1,6 +1,5 @@
 #-*- coding: utf-8 -*-
 """Cats module data models"""
-
 from __future__ import annotations
 
 from pydantic import BaseModel, ConfigDict, Field

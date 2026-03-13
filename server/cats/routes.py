@@ -1,20 +1,14 @@
 #-*- coding: utf-8 -*-
 """Cats module routes"""
-
 from __future__ import annotations
-from typing import TYPE_CHECKING
 
 from fastapi import APIRouter, Depends, status
+from sqlalchemy.orm import Session
 
+from server.cats.controllers import CatsController
 from server.cats.dtos import CreateCatDTO, CatDTO
 from server.cats.providers import provide_cats_controller
 from server.shared.database.providers import provide_database_session
-
-
-if TYPE_CHECKING:
-    from sqlalchemy.orm import Session
-    from server.cats.controllers import CatsController
-
 
 router = APIRouter(prefix='/cats', tags=['cats'])
 

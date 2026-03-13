@@ -1,5 +1,6 @@
 #-*- coding: utf-8 -*-
 """Cats module services"""
+from __future__ import annotations
 
 from sqlalchemy.orm import Session
 from server.cats.orms import Cat

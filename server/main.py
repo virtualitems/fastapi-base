@@ -1,5 +1,6 @@
 #-*- coding: utf-8 -*-
 """Bootstrap the FastAPI server application."""
+from __future__ import annotations
 
 from fastapi import FastAPI
 

@@ -1,11 +1,11 @@
 #-*- coding: utf-8 -*-
 """Cats module ORM models"""
+from __future__ import annotations
 
 from sqlalchemy import String
 from sqlalchemy.orm import Mapped, mapped_column
 
 from server.shared.database.orm import BaseORM
-
 
 class Cat(BaseORM):
     """ORM model for the Cat entity"""

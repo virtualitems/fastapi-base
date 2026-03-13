@@ -1,5 +1,6 @@
 #-*- coding: utf-8 -*-
 """Environment variable loading for the application"""
+from __future__ import annotations
 
 from os import getenv
 

@@ -1,6 +1,5 @@
 #-*- coding: utf-8 -*-
 """Database providers for the application"""
-
 from __future__ import annotations
 
 from sqlalchemy import create_engine, orm
