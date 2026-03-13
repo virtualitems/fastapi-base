@@ -9,6 +9,7 @@ from server.cats.controllers import CatsController
 from server.cats.services import CatsService
 
 class Container(DeclarativeContainer):
+    """Dependency injection container for cats module"""
     config = Configuration()
     cats_service = Singleton(CatsService)
     cats_controller = Singleton(CatsController, service=cats_service)
