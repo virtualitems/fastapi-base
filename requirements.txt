@@ -1,0 +1,7 @@
+alembic
+dependency-injector
+fastapi
+pydantic
+python-dotenv
+sqlalchemy
+uvicorn
