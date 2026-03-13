@@ -11,7 +11,7 @@ def exists(value: str) -> bool:
     """Check if an environment variable exists"""
     return value is not None
 
-def build_env():
+def build_env(env_path: str | None = None) -> dict[str, str]:
     """Build the environment variable dictionary"""
 
     rules = {
@@ -21,8 +21,8 @@ def build_env():
 
     env_vars = {}
 
-    if Path('.env').exists():
-        env_vars.update(dotenv_values('.env'))
+    if isinstance(env_path, str) and Path(env_path).exists():
+        env_vars.update(dotenv_values(env_path))
 
     for key, rules in rules.items():
         value = env_vars.get(key)
@@ -40,4 +40,4 @@ def build_env():
 
     return env_vars
 
-env = build_env()
+env = build_env('.env')
