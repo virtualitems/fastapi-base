@@ -1,6 +1,7 @@
 #--*- coding: utf-8 -*-
 """Cats module controllers"""
 
+from sqlalchemy.orm import Session
 from server.cats.dtos import CreateCatDTO
 from server.cats.services import CatsService
 
@@ -10,10 +11,10 @@ class CatsController:
     def __init__(self, service: CatsService):
         self.service = service
 
-    def create(self, body: CreateCatDTO):
+    def create(self, db: Session, body: CreateCatDTO):
         """Create a new cat"""
-        return self.service.create_cat(body)
+        return self.service.create_cat(db, body)
 
-    def list(self):
+    def list(self, db: Session):
         """List all cats"""
-        return self.service.list_cats()
+        return self.service.list_cats(db)
