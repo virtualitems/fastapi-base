@@ -11,6 +11,7 @@ class CatsController:
     """Controller layer for cats module"""
     def __init__(self, service: CatsService):
         self.service = service
+        print('ctr')
 
     def create(self, db: Session, body: CreateCatDTO):
         """Create a new cat"""
