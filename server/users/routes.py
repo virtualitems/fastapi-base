@@ -5,10 +5,11 @@ from __future__ import annotations
 from fastapi import APIRouter, Depends, status
 from sqlalchemy.orm import Session
 
+from server.shared.database.providers import provide_database_session
+
 from server.users.controllers import UsersController
 from server.users.dtos import CreateUserDTO, UserDTO
 from server.users.providers import provide_users_controller
-from server.shared.database.providers import provide_database_session
 
 router = APIRouter(prefix='/users', tags=['users'])
 
