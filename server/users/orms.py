@@ -10,7 +10,7 @@ from server.shared.database.orm import BaseORM
 class User(BaseORM):
     """ORM model for the User entity"""
 
-    __tablename__ = "users"
+    __tablename__ = 'users'
 
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
     name: Mapped[str] = mapped_column(String(100), nullable=False)

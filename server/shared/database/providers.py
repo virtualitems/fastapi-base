@@ -8,7 +8,7 @@ from server.shared.env import env
 
 engine = create_engine(
     url=env.get('DATABASE_URL'),
-    connect_args={"check_same_thread": False},
+    connect_args={'check_same_thread': False},
 )
 
 SessionLocal = orm.sessionmaker(

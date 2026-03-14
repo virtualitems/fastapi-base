@@ -21,12 +21,12 @@ depends_on: Union[str, Sequence[str], None] = None
 def upgrade() -> None:
     """Upgrade schema."""
     op.create_table(
-        "cats",
-        sa.Column("id", sa.Integer(), primary_key=True),
-        sa.Column("name", sa.String(length=100), nullable=False),
+        'cats',
+        sa.Column('id', sa.Integer(), primary_key=True),
+        sa.Column('name', sa.String(length=100), nullable=False),
     )
 
 
 def downgrade() -> None:
     """Downgrade schema."""
-    op.drop_table("cats")
+    op.drop_table('cats')
