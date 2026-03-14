@@ -1,12 +1,12 @@
 [install]
 python3.11 -m venv .venv
-call .\.venv\Scripts\python -m pip install --upgrade pip
-call .\.venv\Scripts\python -m pip install -r requirements.txt
-call .\.venv\Scripts\python -m alembic init alembic
+python3.11 -m pip install --upgrade pip
+python3.11 -m pip install -r requirements.txt
+python3.11 -m alembic init alembic
 
 [dev]
-.\.venv\Scripts\python -m uvicorn server.main:server --reload --host 0.0.0.0 --port 80
+python3.11 -m uvicorn server.main:server --reload --host 0.0.0.0 --port 80
 
 [make migration]
-call .\.venv\Scripts\python -m alembic revision -m "create xxxx table"
-call .\.venv\Scripts\python -m alembic upgrade head
+python3.11 -m alembic revision -m "create xxxx table"
+python3.11 -m alembic upgrade head
