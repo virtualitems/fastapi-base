@@ -23,8 +23,8 @@ def upgrade() -> None:
     op.create_table(
         'auth_users',
         sa.Column('id', sa.Integer(), primary_key=True),
-        sa.Column('email', sa.String(length=255), nullable=False, unique=True),
-        sa.Column('password', sa.String(length=255), nullable=False),
+        sa.Column('email', sa.String(length=300), nullable=False, unique=True),
+        sa.Column('password', sa.String(length=300), nullable=False),
     )
 
 

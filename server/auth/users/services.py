@@ -11,7 +11,8 @@ class UsersService:
 
     def create_user(self, db: Session, body: CreateUserDTO) -> User:
         """Create a new user in the database"""
-        user = User(name=body.name)
+        user = User(email=body.email)
+        user.set_password(body.password)
         db.add(user)
         db.commit()
         db.refresh(user)

@@ -2,6 +2,7 @@ alembic
 dependency-injector
 fastapi
 pydantic
+pydantic[email]
 python-dotenv
 sqlalchemy
 uvicorn
