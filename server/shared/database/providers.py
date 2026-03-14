@@ -19,8 +19,5 @@ SessionLocal = orm.sessionmaker(
 
 def provide_database_session():
     """Provides a database session"""
-    db: orm.Session = SessionLocal()
-    try:
+    with SessionLocal() as db:
         yield db
-    finally:
-        db.close()
