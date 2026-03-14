@@ -3,8 +3,8 @@
 from __future__ import annotations
 
 from sqlalchemy.orm import Session
-from server.users.dtos import CreateUserDTO
-from server.users.services import UsersService
+from server.auth.users.dtos import CreateUserDTO
+from server.auth.users.services import UsersService
 
 
 class UsersController:

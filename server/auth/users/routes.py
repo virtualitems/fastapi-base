@@ -7,9 +7,9 @@ from sqlalchemy.orm import Session
 
 from server.shared.database.providers import provide_database_session
 
-from server.users.controllers import UsersController
-from server.users.dtos import CreateUserDTO, UserDTO
-from server.users.providers import provide_users_controller
+from server.auth.users.controllers import UsersController
+from server.auth.users.dtos import CreateUserDTO, UserDTO
+from server.auth.users.providers import provide_users_controller
 
 router = APIRouter(prefix='/users', tags=['users'])
 

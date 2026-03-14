@@ -3,8 +3,8 @@
 from __future__ import annotations
 
 from sqlalchemy.orm import Session
-from server.users.orms import User
-from server.users.dtos import CreateUserDTO
+from server.auth.users.orms import User
+from server.auth.users.dtos import CreateUserDTO
 
 class UsersService:
     """Service layer for users module"""

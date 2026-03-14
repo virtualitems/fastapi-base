@@ -2,8 +2,8 @@
 """Users module providers"""
 from __future__ import annotations
 
-from server.users.controllers import UsersController
-from server.users.services import UsersService
+from server.auth.users.controllers import UsersController
+from server.auth.users.services import UsersService
 
 user_service = UsersService()
 user_controller = UsersController(service=user_service)
