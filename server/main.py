@@ -10,7 +10,7 @@ from server.shared.env import env
 
 server = FastAPI(title=env.get('APP_NAME'))
 
-@server.get('/health', status_code=status.HTTP_204_NO_CONTENT)
+@server.get('/api/health', status_code=status.HTTP_204_NO_CONTENT)
 def health_check():
     """Endpoint to check the health of the server"""
 

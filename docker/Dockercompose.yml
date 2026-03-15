@@ -9,11 +9,11 @@ services:
       no_cache: true
     env_file:
       - ../.env
-    command: python -m uvicorn server.main:server --host 0.0.0.0 --port 80 --reload
+    command: python -OO -m uvicorn server.main:server --host 0.0.0.0 --port 80 --workers 1
     networks:
       - app-network
     healthcheck:
-      test: ["CMD", "wget2", "-q", "-O", "-", "http://localhost:80/health"]
+      test: ["CMD", "wget2", "-q", "-O", "-", "http://localhost:80/api/health"]
       interval: 10s
       timeout: 5s
       retries: 5
