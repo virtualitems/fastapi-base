@@ -1,0 +1,20 @@
+FROM python:3.11.15-alpine
+
+RUN apk add --no-cache wget2
+
+WORKDIR /app
+
+COPY alembic.ini .
+COPY requirements.txt .
+COPY alembic/ ./alembic/
+COPY server/ ./server/
+
+RUN python -m pip install --upgrade pip
+
+RUN python -m pip install --no-cache-dir -r requirements.txt
+
+RUN python -m alembic upgrade head
+
+EXPOSE 80
+
+CMD ["python", "-m", "uvicorn", "server.main:server", "--host", "0.0.0.0", "--port", "80"]
