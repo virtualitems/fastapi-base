@@ -17,4 +17,4 @@ class TokenDTO(BaseModel):
 class TokenDataDTO(BaseModel):
     """Data transfer object for token data"""
     sub: str | None = None
-    ver: str | None = None
+    ver: int | None = None

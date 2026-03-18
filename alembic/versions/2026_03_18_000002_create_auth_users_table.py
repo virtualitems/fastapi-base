@@ -29,7 +29,7 @@ def upgrade() -> None:
         sa.Column('email', sa.String(length=300), nullable=False),
         sa.Column('password', sa.String(length=300), nullable=False),
         sa.Column('last_login', sa.DateTime(), nullable=True),
-        sa.Column('jwt_version', sa.String(length=15), nullable=True),
+        sa.Column('jwt_version', sa.BigInteger(), nullable=False),
         sa.Column('created_at', sa.DateTime(), nullable=False),
         sa.Column('updated_at', sa.DateTime(), nullable=True),
         sa.Column('deleted_at', sa.DateTime(), nullable=True),

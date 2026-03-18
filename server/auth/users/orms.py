@@ -24,7 +24,7 @@ class User(BaseORM):
     email: Mapped[str] = mapped_column(String(300), nullable=False, unique=True)
     password: Mapped[str] = mapped_column(String(300), nullable=False)
     last_login: Mapped[Optional[datetime]] = mapped_column(DateTime, nullable=True)
-    jwt_version: Mapped[Optional[str]] = mapped_column(String(15), nullable=True)
+    jwt_version: Mapped[int] = mapped_column(nullable=False)
     created_at: Mapped[datetime] = mapped_column(DateTime, nullable=False)
     updated_at: Mapped[Optional[datetime]] = mapped_column(DateTime, nullable=True)
     deleted_at: Mapped[Optional[datetime]] = mapped_column(DateTime, nullable=True)

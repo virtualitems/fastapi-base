@@ -29,7 +29,7 @@ class UsersService:
             )
 
         slug = self._generate_slug(body.email)
-        jwt_version = str(int(datetime.now(timezone.utc).timestamp() * 1000))
+        jwt_version = int(datetime.now(timezone.utc).timestamp() * 1000)
 
         user = User(
             slug=slug,
