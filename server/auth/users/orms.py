@@ -6,7 +6,10 @@ import hashlib
 import hmac
 import secrets
 
-from sqlalchemy import String
+from datetime import datetime
+from typing import Optional
+
+from sqlalchemy import String, DateTime
 from sqlalchemy.orm import Mapped, mapped_column
 
 from server.shared.database.orm import BaseORM
@@ -17,8 +20,13 @@ class User(BaseORM):
     __tablename__ = 'auth_users'
 
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
+    slug: Mapped[str] = mapped_column(String(100), nullable=False, unique=True)
     email: Mapped[str] = mapped_column(String(300), nullable=False, unique=True)
     password: Mapped[str] = mapped_column(String(300), nullable=False)
+    last_login: Mapped[Optional[datetime]] = mapped_column(DateTime, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(DateTime, nullable=False)
+    updated_at: Mapped[Optional[datetime]] = mapped_column(DateTime, nullable=True)
+    deleted_at: Mapped[Optional[datetime]] = mapped_column(DateTime, nullable=True)
 
     def set_password(self, password: str) -> None:
         """Creates a hash for the given password and stores it in the password field"""
