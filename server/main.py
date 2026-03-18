@@ -4,9 +4,11 @@ from __future__ import annotations
 
 from fastapi import FastAPI, status
 
-from server.auth.tokens.routes import router as tokens_router
-from server.auth.users.routes import router as users_router
 from server.shared.env import env
+
+from server.auth.permissions.routes import router as permissions_router
+from server.auth.roles.routes import router as roles_router
+from server.auth.users.routes import router as users_router
 
 server = FastAPI(title=env.get('APP_NAME'))
 
@@ -14,5 +16,6 @@ server = FastAPI(title=env.get('APP_NAME'))
 def health_check():
     """Endpoint to check the health of the server"""
 
-server.include_router(tokens_router, prefix='/api')
 server.include_router(users_router, prefix='/api')
+server.include_router(roles_router, prefix='/api')
+server.include_router(permissions_router, prefix='/api')
