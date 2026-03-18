@@ -3,6 +3,7 @@ dependency-injector
 fastapi
 pydantic
 pydantic[email]
+pyjwt
 python-dotenv
 sqlalchemy
 uvicorn
